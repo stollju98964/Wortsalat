@@ -1,9 +1,10 @@
 #include "input.h"
 #include <string.h>
 #include <ctype.h>
-#include <stdio.h>
 
-// Read words from file and store in 'words' array
+// TODO:
+// eine Funktion implementieren, die ein einzelnes Wort aus einer Textdatei (words.txt) einliest und als C-String zurückgibt.
+
 int readWords(FILE *file, char words[][MAX_WORD_LEN], unsigned int maxWordCount)
 {
     if (file == NULL || words == NULL || maxWordCount == 0)
@@ -24,7 +25,7 @@ int readWords(FILE *file, char words[][MAX_WORD_LEN], unsigned int maxWordCount)
             if (isalpha((unsigned char)*p))
             {
                 inword = 1;
-                if (ci + 1 < MAX_WORD_LEN) /* Platz für Zeichen + Terminator */
+                if (ci + 1 < MAX_WORD_LEN) //Platz für \0 lassen
                     cleaned[ci++] = (char)toupper((unsigned char)*p);
                 /* sonst: überschüssige Zeichen verwerfen bis Wortende */
             }
@@ -39,7 +40,7 @@ int readWords(FILE *file, char words[][MAX_WORD_LEN], unsigned int maxWordCount)
                         words[count][MAX_WORD_LEN - 1] = '\0';
                         ++count;
                     }
-                    /* reset für das nächste Token */
+                    /* reset für nächstes Wort */
                     ci = 0;
                     inword = 0;
                 }

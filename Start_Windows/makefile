@@ -1,10 +1,12 @@
 CC = gcc
-CFLAGS = -g -Wall -I$(raylibfolder)
+CFLAGS = -g -Wall -I$(raylib_folder)
 LDFLAGS = -lopengl32 -lgdi32 -lwinmm
 BINARIES = ./windows
 
 raylib_folder = ./raylib
 unityfolder = ./unity
+
+.PHONY: all clean test wordsalad_initial wordsalad_myversion
 
 # --------------------------
 # initiales Spiel bauen
@@ -12,6 +14,8 @@ unityfolder = ./unity
 wordsalad_initial:
 	$(CC) -o wordsalad_initial $(BINARIES)/libwordsalad_complete.a $(BINARIES)/libraylib.a $(LDFLAGS)
 
+wordsalad_myversion: main.c graphicalGame.o $(BINARIES)/libwordsalad.a $(BINARIES)/libraylib.a
+	$(CC) $(CFLAGS) -o wordsalad_myversion main.c graphicalGame.o $(BINARIES)/libwordsalad.a $(BINARIES)/libraylib.a $(LDFLAGS)
 
 # --------------------------
 # Normales Spiel bauen
@@ -23,13 +27,13 @@ main.o: main.c
 	$(CC) -c $(CFLAGS) main.c
 
 input.o: input.c
-	$(CC) -c $(CFLAGS)input.c
+	$(CC) -c $(CFLAGS) input.c
 
 game.o: game.c
 	$(CC) -c $(CFLAGS) game.c
 
 graphicalGame.o: graphicalGame.c
-	$(CC) -I$(raylib_folder) -c $(CFLAGS) graphicalGame.c
+	$(CC) $(CFLAGS) -I$(raylib_folder) -c graphicalGame.c
 
 # --------------------------
 # Unit Tests

@@ -1,12 +1,10 @@
 CC = gcc
-CFLAGS = -g -Wall -I$(raylib_folder)
+CFLAGS = -g -Wall
 LDFLAGS = -lopengl32 -lgdi32 -lwinmm
 BINARIES = ./windows
 
-raylib_folder = ./raylib
+raylibfolder = ./raylib
 unityfolder = ./unity
-
-.PHONY: all clean test wordsalad_initial wordsalad_myversion
 
 # --------------------------
 # initiales Spiel bauen
@@ -33,7 +31,7 @@ game.o: game.c
 	$(CC) -c $(CFLAGS) game.c
 
 graphicalGame.o: graphicalGame.c
-	$(CC) $(CFLAGS) -I$(raylib_folder) -c graphicalGame.c
+	$(CC) -I$(raylibfolder) -c $(CFLAGS) graphicalGame.c
 
 # --------------------------
 # Unit Tests

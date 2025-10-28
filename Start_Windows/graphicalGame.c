@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -453,3 +454,16 @@ void startGame(const char wordSalad[MAX_SEARCH_FIELD_LEN][MAX_SEARCH_FIELD_LEN],
 
 /*gcc -fPIC -c input.c game.c graphicalGame.c main.c
 gcc -shared -o libwortsalat.a input.o game.o graphicalGame.o main.o*/
+
+/* Minimaler, sichtbar linker Stub. Ersetzt das durch die echte GUI-Implementierung. */
+void startGraphicalGame(const char salad[MAX_SEARCH_FIELD_LEN][MAX_SEARCH_FIELD_LEN],
+                        unsigned int searchFieldLen,
+                        const char words[][MAX_WORD_LEN],
+                        unsigned int wordCount)
+{
+    /* Fenstergröße basierend auf Suchfeldgröße (anpassen falls gewünscht) */
+    unsigned int windowSize = searchFieldLen * 32 + 200;
+
+    /* startGame erwartet 'char words[][MAX_WORD_LEN]' — const cast ist hier ok */
+    startGame(salad, searchFieldLen, (char (*)[MAX_WORD_LEN])words, wordCount, windowSize);
+}

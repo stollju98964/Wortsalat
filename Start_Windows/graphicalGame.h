@@ -3,6 +3,11 @@
 
 #include "game.h"
 
-void startGame(const char wordSalad[MAX_SEARCH_FIELD_LEN][MAX_SEARCH_FIELD_LEN], unsigned int searchFieldSize, char words[][MAX_WORD_LEN], unsigned int numberOfWords, unsigned int windowWidth);
+/* Fügt hier die Deklaration der GUI-Startfunktion ein.
+   Prüfe Rückgabewert / Parameter, falls in deiner implementation anders. */
+void startGraphicalGame(const char salad[MAX_SEARCH_FIELD_LEN][MAX_SEARCH_FIELD_LEN],
+                        unsigned int searchFieldLen,
+                        const char words[][MAX_WORD_LEN],
+                        unsigned int wordCount);
 
 #endif

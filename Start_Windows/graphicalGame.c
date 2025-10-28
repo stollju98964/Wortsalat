@@ -112,7 +112,7 @@ static void freeSearchWordPanel(SearchWordPanel *panel)
 // Creates a panel to display a list of search words
 static SearchWordPanel createSearchWordPanel(const char words[][MAX_WORD_LEN], unsigned int numberOfWords, unsigned int windowOffset)
 {
-    const int maxStringLenInPx = 200;  // Max width of each word
+    const int maxStringLenInPx = 150;  // Max width of each word
     const int fontSize = 18;  // Font size for displaying words
     const int rowHeight = fontSize * 1.2 + 5;  // Height of each row of words
 
